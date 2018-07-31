@@ -1,0 +1,61 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+	<title>Image Viewer</title>
+	<style>
+	#scene{ position: fixed; width:100%; height:100%; top:0; left:0; display:none; overflow: hidden; text-align: center; font-size: 20px; z-index:900; font-family: sans-serif; text-shadow: -1px 1px 1px rgba(0, 0, 0, 0.6); }
+		#scene.show{ display:block; }
+		#scene.hide{ display:none; }
+		
+		#scene .background{ background:rgba( 0, 0, 0, 0.7 ); position:fixed; width:100%; height:100%; top:0; left:0; }
+		
+		#scene .frame{ text-align:center; margin:auto; display: inline-block; position: absolute; transition: all .3s; }
+			#scene .frame img{ display:block; }
+		
+		#scene .handle{ padding: 5px 0; bottom:0; position: fixed; width: 100%; font-size:25px; line-height: 35px; z-index:999; visibility:hidden; display: block; width: 100%; left: 0; background: rgba(75, 75, 75, 0.7); text-align:center; font-weight: normal; }
+			#scene .handle .page{ margin:auto; visibility:hidden; color:#FFF; z-index:999; }
+			
+			#scene .handle .prev{ float:left; }
+			#scene .handle .next{ float:right; }
+			
+			#scene .handle .prev, #scene .handle .next{ color:#D6D6D6; cursor:pointer; padding:0 15px; font-size:50px; }
+			#scene .handle .prev:hover, #scene .handle .next:hover{ color:#FFF; }
+		
+		#scene .control{}
+			#scene .zoom{ text-align:center; margin:auto; display: inline-block; visibility:hidden; color:#FFF; line-height: 20px; position: relative; z-index:999; background: rgba(75, 75, 75, 0.7); padding:5px 15px; border-radius:0 0 5px 5px; }
+			#scene .exit{ position: fixed; z-index:999; right: 0; top: 0; display: block; color: rgb(255, 255, 255); font-size: 50px; background: rgb(182, 40, 40); padding: 2px 15px 15px 15px; line-height: 35px; cursor:pointer; visibility:hidden; }
+	
+	#wrap{ max-width:100%; }
+		#wrap img{ max-width:100%; margin:20px 0; box-sizing:border-box; }
+		
+	#refresh{ position:fixed; top:5px; right:5px; }
+			#refresh button{ border:#87BDE2 solid 1px; width:50px; height:50px; background:#FFF; text-align:center; line-height:50px; font-size:14px; border-radius:50%; color:#838383; }
+		
+	#debug{ clear:both; padding:10px; background:#F30; color:#FFF; width:100%; position:fixed; left:0; bottom:0; z-index:9999; display:none; }
+	
+	</style>
+</head>
+
+<body>
+
+	<div id="refresh">
+		<button type="button" onClick="location.href = '?time='+ Scene.time();">刷新</button>
+	</div>
+
+	<div id="wrap">
+		<img src="image/31510370d5dce7b5fed90b2bdcd45240.jpg" id="test" />
+		<img src="image/8f8a8e537695d22a5aef2583647d2d0d.jpg" />
+		<img src="image/8db0f59c4fd046aa092bfb52daece6f7.jpg" />
+		<img src="image/201df54f81a65b53641a36a5759665e5.jpg" />
+	</div>
+	
+	<div id="debug"></div>
+	
+	<script src="scene.min.js"></script>
+	<script>
+	Scene.init( document.getElementById('wrap') );
+	</script>
+
+</body>
+</html>
